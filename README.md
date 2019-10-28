@@ -13,11 +13,7 @@
 
 ## Download and install Terraform
 
-Download the appropriate package from 
-
-[Terraform&#39;s website](https://learn.hashicorp.com/terraform/getting-started/install.html)
-
- unzip it then create a symbolic link to the terraform binary!
+Download the appropriate package from [Terraform&#39;s website](https://learn.hashicorp.com/terraform/getting-started/install.html) unzip it then create a symbolic link to the terraform binary!
 
 ```bash
 cd /usr/bin
@@ -28,7 +24,7 @@ sudo ln -s <path to the terraform binary> terraform
 
 Navigate into the project repository and initialize it for Terraform!
 
-Note: When applied Terraform will read every file with .tf extension in the repository so make sure that your project repo only contains .tf files that you really need.
+> Note: When applied Terraform will read every file with .tf extension in the repository so make sure that your project repo only contains .tf files that you really need.
 
 ```bash
 terraform init
@@ -85,9 +81,9 @@ resource "aws_instance" "example" {
 
 With the count argument you can set how many instances you want to launch, the ami argument sets the OS of all the instances and the instance_type argument tells the size of the servers.
 
-Note: count is a global argument it can be used for every resource and you can refer to the order of a single instance with ${count.index}.
+> Note: count is a global argument it can be used for every resource and you can refer to the order of a single instance with ${count.index}.
 
-Note: AWS uses different IDs for the same OS in different regions. You can consult [this website] (https://cloud-images.ubuntu.com/locator/ec2/) for the appropriate ami ID.
+> Note: AWS uses different IDs for the same OS in different regions. You can consult [this website](https://cloud-images.ubuntu.com/locator/ec2/) for the appropriate ami ID.
 
 Terraform is also able to reach and manipulate the servers you launched via SSH. To enable this function you must open  a port for this type of connection then create a key-pair, register the public-key with AWS, add this key-pair to the EC2 instance's settings then describe the details of the connection.
 
@@ -130,7 +126,7 @@ resource "aws_key_pair" "example_key" {
 }
 ```
 
-Note: Consult [this website] (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#how-to-generate-your-own-key-and-import-it-to-aws) for the appropriate key format!
+> Note: Consult [this website](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#how-to-generate-your-own-key-and-import-it-to-aws) for the appropriate key format!
 
 To associate this key-pair with the EC2 instances add the following line to the aws_instance declaration block!
 
@@ -159,9 +155,9 @@ resource "aws_instance" "example" {
 }
 ```
 
-Note: Instead of copying the generated keys you can reference them like file("path to the .pem file")
+> Note: Instead of copying the generated keys you can reference them like file("path to the .pem file")
 
-Note: If you have a key-pair that is already registered with AWS you don't need the aws_key_pair resource and you can use the registered name of that key-pair for the key_name argument and the the downloaded .pem file for  the private_key argument.
+> Note: If you have a key-pair that is already registered with AWS you don't need the aws_key_pair resource and you can use the registered name of that key-pair for the key_name argument and the the downloaded .pem file for  the private_key argument.
 
 To manipulate the launched servers you can use provisioners. The file provisioner can copy the specified files to the remote server and the remote-exec provisioner can execute the provided commands on the remote server. The example below copies a script file then executes it on the remote server.
 
@@ -209,7 +205,7 @@ terraform destroy
 
 ## Notes and best practices
 
-To learn more about the providers and resources see [Terraform's documentations] (https://www.terraform.io/docs/providers/index.html) !
+To learn more about the providers and resources see [Terraform's documentations](https://www.terraform.io/docs/providers/index.html) !
 
 Make sure to store all sensitive data (like AWS credentials, SSH keys) in a separate file and add this file to .gitignore! You may transfer these informations by secure copying the files to the remote servers if necessary.
 
