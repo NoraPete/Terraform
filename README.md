@@ -15,7 +15,7 @@
 
 Download the appropriate package from 
 
-[Terraform&#39;s website] : https://learn.hashicorp.com/terraform/getting-started/install.html
+[Terraform&#39;s website](https://learn.hashicorp.com/terraform/getting-started/install.html)
 
  unzip it then create a symbolic link to the terraform binary!
 
